@@ -7,9 +7,8 @@ import { assert } from 'console';
 
 describe("Verify the UserFacade", () => {
 
-  //Exercise --> Fix this to handle password hashing, asynchronously
   beforeEach(() => {
-    const hash: string = "secret";
+     const hash: string = await bryptAsync("secret");
     UserFacade.users = [
       { name: "Peter Pan", userName: "pp@b.dk", password: hash, role: "user" },
       { name: "Donald Duck", userName: "dd@b.dk", password: hash, role: "user" },
