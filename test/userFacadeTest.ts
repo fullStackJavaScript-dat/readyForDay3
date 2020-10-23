@@ -25,11 +25,11 @@ xit("Should Add the user Kurt", async () => {
   try {
     const status = await UserFacade.addUser(newUser);
     const jan = await UserFacade.getUser("jo@b.dk");
-    const passwordOK = bryptCheckAsync("secret", jan.password);
+    const passwordOK = await bryptCheckAsync("secret", jan.password);
     expect(status).to.be.equal("User was added")
     expect(UserFacade.users.length).to.equal(4)
   } catch (err) {
-    throw new Error("Password did not match")
+    expect.fail("Seems like password was not hashed correctly")
   } finally { }
 })
 xit("Should remove the user Peter", async () => {
